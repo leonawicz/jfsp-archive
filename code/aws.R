@@ -43,6 +43,24 @@ fmoba <- purrr::map(seq_along(reg), ~format_fmoba(files[[1]][.x], files[[2]][.x]
                       mutate(Group = grp[.x], Region = reg[.x])) %>% bind_rows() %>%
   arrange(Group, Region, Set, Tx, RCP, Model, Year)
 
+regba <- mutate(fmoba, Total = Unmanaged + Limited + Modified + Critical + Full + Other) %>% select(c(1:5, 14, 12:13))
+r <- snapgrid::swflam
+x0 <- round(247.105 * freq(r)[1, 2])
+x1 <- reg[grp == "Ecoregion"]
+x2 <- reg[grp == "FMZ"]
+
+x1a <- purrr::map_dbl(x1, ~({
+  x <- subset(snappoly::ecoreg, snappoly::ecoreg$LEVEL_2 %in% .x)
+  round(247.105 * sum(unlist(extract(r, x)), na.rm = TRUE))
+}))
+x1b <- purrr::map_dbl(x2, ~({
+  x <- subset(snappoly::fmz, snappoly::fmz$REGION %in% .x)
+  round(247.105 * sum(unlist(extract(r, x)), na.rm = TRUE))
+}))
+
+get_acres <- function(id) as.integer(c(x0, x1a, x1b)[match(id, c("Alaska", x1, x2))])
+regba <- mutate(regba, Region_Acres = get_acres(Region))
+
 mgmtcost <- filter(fmoba, Set == "fmo99s95i")
 
 mc_cost <- function(data, basecost, n = 1000, seed = 1, decadal = FALSE){
@@ -83,3 +101,4 @@ costdec2 <- filter(costdec, Decade >= 2020)
 saveRDS(costann, "data-raw/cost/costann.rds")
 saveRDS(costdec, "data-raw/cost/costdec.rds")
 saveRDS(costdec2, "data-raw/cost/costdec_2020-2099.rds")
+saveRDS(regba, "data-raw/ba_reg/regba.rds")
