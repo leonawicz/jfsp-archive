@@ -5,4 +5,5 @@
 other_example_apps
 shapefiles
 jfsp/www/stat*png
-aws_key.R
+*aws_key.R
+*rsconnect*
