@@ -2,8 +2,6 @@
 .Rhistory
 *.RData
 .Ruserdata
-other_example_apps
-shapefiles
 jfsp/www/stat*png
 *aws_key.R
 *rsconnect*
