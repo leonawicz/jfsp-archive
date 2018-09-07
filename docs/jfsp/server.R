@@ -55,7 +55,7 @@ shinyServer(function(input, output){
   
   output$plot_bavar <- renderPlot({
     jfsp_plot("ba_sd", 1950:2099, by_rcp = by_rcp(), by_tx = by_tx(), text_size = txt, pt_size = pt,
-              breaks = seq(1960, 2090, by = 10), alaska = alaska(), n = 30, 
+              breaks = seq(1960, 2090, by = 10), alaska = alaska(), n = 10, 
               continuous = TRUE, dashtype = c("ff", "44"), obs = obs_basd())
   })
   
