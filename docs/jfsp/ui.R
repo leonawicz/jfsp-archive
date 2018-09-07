@@ -27,6 +27,7 @@ dashboardPage(skin = "red",
   dashboardBody(
     tabItems(
       tabItem(tabName = "mc",
+              fluidRow(column(12, em("This website was developed as part of project (#16-1-01-18) funded by the Joint Fire Science Program. If you would be interested in participating in an interview to guide the direction of the management scenarios implemented as part of this work, please contact the project PI, Courtney Schultz (courtney.schultz@colostate.edu)"))), br(),
               uiOutput("mc_box"),
               fluidRow(
                 column(3, div(selectInput("mc_domain", "Spatial domain", regions, width = "100%"), style = "height:260px;")),
@@ -35,6 +36,7 @@ dashboardPage(skin = "red",
               )
       ),
       tabItem(tabName = "ba",
+              fluidRow(column(12, em("This website was developed as part of project (#16-1-01-18) funded by the Joint Fire Science Program. If you would be interested in participating in an interview to guide the direction of the management scenarios implemented as part of this work, please contact the project PI, Courtney Schultz (courtney.schultz@colostate.edu)"))), br(),
               fluidRow(
                 tabBox(
                   tabPanel("Variability", plotOutput("plot_bavar", height = "512px")),
@@ -50,6 +52,7 @@ dashboardPage(skin = "red",
               )
       ),
       tabItem(tabName = "fs",
+              fluidRow(column(12, em("This website was developed as part of project (#16-1-01-18) funded by the Joint Fire Science Program. If you would be interested in participating in an interview to guide the direction of the management scenarios implemented as part of this work, please contact the project PI, Courtney Schultz (courtney.schultz@colostate.edu)"))), br(),
               fluidRow(
                 box(plotOutput("plot_fs", height = ht), 
                     title = "Fire size distributions", width = 8),
@@ -61,6 +64,7 @@ dashboardPage(skin = "red",
               )
       ),
       tabItem(tabName = "veg",
+              fluidRow(column(12, em("This website was developed as part of project (#16-1-01-18) funded by the Joint Fire Science Program. If you would be interested in participating in an interview to guide the direction of the management scenarios implemented as part of this work, please contact the project PI, Courtney Schultz (courtney.schultz@colostate.edu)"))), br(),
               fluidRow(
                 tabBox(
                   tabPanel("Veg map", img(src = "https://github.com/leonawicz/jfsp-archive/blob/master/plots/ak_cdratio_2000-2040.png?raw=true", width = "100%", height = "auto")),
