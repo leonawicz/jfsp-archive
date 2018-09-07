@@ -22,6 +22,9 @@ dashboardPage(skin = "red",
     div(hr(), h4("Global options"), style = "margin:10px;"),
     checkboxInput("by_rcp", "Condition on RCPs", TRUE),
     checkboxInput("by_tx", "Include treatment", FALSE),
+    div(hr(), em("This app shows summarized results. Visit the alternate JFSP app for finer detail."), 
+        actionButton("jfsp_full", "Detail View", onclick ="window.open('https://uasnap.shinyapps.io/jfsp/', '_blank')", width = "180px"), 
+        style = "margin:10px;"),
     dashboard_footer("http://snap.uaf.edu/", "res/snap_white.svg", "SNAP Dashboards")
   ),
   dashboardBody(
@@ -55,9 +58,9 @@ dashboardPage(skin = "red",
               fluidRow(column(12, em("This website was developed as part of project (#16-1-01-18) funded by the Joint Fire Science Program. If you would be interested in participating in an interview to guide the direction of the management scenarios implemented as part of this work, please contact the project PI, Courtney Schultz (courtney.schultz@colostate.edu)"))), br(),
               fluidRow(
                 box(plotOutput("plot_fs", height = ht), 
-                    title = "Fire size distributions", width = 8),
-                box(withSpinner(rglwidgetOutput("plot_fsrgl", width = "100%")), 
-                    title = "Mean Fire size (Interactive 3D)", width = 4)
+                    title = "Fire size distributions", width = 12)#,
+                #box(withSpinner(rglwidgetOutput("plot_fsrgl", width = "100%")), 
+                #    title = "Mean Fire size (Interactive 3D)", width = 4)
               ),
               fluidRow(
                 column(3, checkboxInput("log_fs", "Log scale", TRUE))
