@@ -2,7 +2,7 @@ library(shiny)
 library(shinydashboard)
 library(apputils)
 library(snaputils)
-library(rgl)
+#library(rgl)
 
 reg <- c("Arctic Tundra", "Bering Taiga", "Bering Tundra", "Intermontane Boreal")
 names(reg) <- reg

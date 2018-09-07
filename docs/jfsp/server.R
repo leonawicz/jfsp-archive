@@ -64,13 +64,13 @@ shinyServer(function(input, output){
     suppressMessages( p + ggplot2::scale_x_discrete(labels = paste0(seq(2020, 2090, by = 10))) )
   })
   
-  output$plot_fsrgl <- renderRglwidget({
-    try(rgl.close())
-    rgl.viewpoint(theta = 210, phi = 90)
-    persp3d(x, fs_3d_y(), m, col = clrs[cut(m, 30)], ticktype = "detailed", xlab = "Decade", ylab = fs_3d_ylab(), zlab = "Probability", lit = FALSE, axes = FALSE)
-    axes3d(edges = c("x+-", "y--", "z"))
-    rglwidget()
-  })
+  # output$plot_fsrgl <- renderRglwidget({
+  #   try(rgl.close())
+  #   rgl.viewpoint(theta = 210, phi = 90)
+  #   persp3d(x, fs_3d_y(), m, col = clrs[cut(m, 30)], ticktype = "detailed", xlab = "Decade", ylab = fs_3d_ylab(), zlab = "Probability", lit = FALSE, axes = FALSE)
+  #   axes3d(edges = c("x+-", "y--", "z"))
+  #   rglwidget()
+  # })
   
   output$plot_cdba <- renderPlot({
     jfsp_plot("cdba", 1950:2099, by_rcp = by_rcp(), by_tx = by_tx(), text_size = txt, pt_size = pt,
